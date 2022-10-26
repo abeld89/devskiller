@@ -1,0 +1,23 @@
+spring:
+    h2:
+        console:
+            enabled: true
+        path: /h2
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        database-platform: org.hibernate.dialect.H2Dialect
+        properties:
+            hibernate:
+                format_sql: true
+    datasource:
+        url: jdbc:h2:mem:mangodb;DB_CLOSE_DELAY=-1
+        driverClassname: org.h2.Driver
+        username: sa
+        password: sa
+
+springdoc:
+    api-docs:
+        path: /api
+    swagger-ui:
+        path: /swagger
