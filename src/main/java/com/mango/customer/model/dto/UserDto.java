@@ -24,7 +24,7 @@ public class UserDto {
 
 	@NotBlank
 	@Size(min = 5, max = 150)
-	private String Address;
+	private String address;
 
 	@NotBlank
 	@Size(min = 3, max = 30)

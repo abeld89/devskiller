@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -21,16 +22,16 @@ public class SloganServiceImpl implements SloganService {
 
 	private final SloganRepository sloganRepository;
 	private final UserRepository userRepository;
-
 	private final SloganMapper sloganMapper;
 
 
 	@Override
+	@Transactional
 	public SloganDto createSlogan(SloganDto sloganDto) {
 
-		Optional<User> user = userRepository.findById(sloganDto.getId());
+		Optional<User> user = userRepository.findById(sloganDto.getUserId());
 		if (user.isPresent()) {
-			Long slogansByUser = sloganRepository.countByUserId(user.get().getId());
+			int slogansByUser = sloganRepository.countByUserId(user.get().getId());
 			if (slogansByUser < 3) {
 				Slogan sloganToSave = sloganMapper.toEntity(sloganDto);
 				sloganToSave.setUser(user.get());

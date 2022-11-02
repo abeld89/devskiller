@@ -10,14 +10,9 @@ spring:
         properties:
             hibernate:
                 format_sql: true
+        defer-datasource-initialization: true
     datasource:
         url: jdbc:h2:mem:mangodb;DB_CLOSE_DELAY=-1
         driverClassname: org.h2.Driver
         username: sa
         password: sa
-
-springdoc:
-    api-docs:
-        path: /api
-    swagger-ui:
-        path: /swagger

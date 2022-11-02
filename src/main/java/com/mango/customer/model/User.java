@@ -20,7 +20,7 @@ public class User implements Serializable {
 
 	private String lastName;
 
-	private String Address;
+	private String address;
 
 	private String city;
 

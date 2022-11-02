@@ -18,7 +18,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
-
 	private final UserMapper userMapper;
 
 	@Override
@@ -28,6 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public UserDto updateUser(UserDto userDto, Long userId) {
 		Optional<User> user = userRepository.findById(userId);
 		if (user.isPresent()){
